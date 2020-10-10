@@ -17,5 +17,5 @@ services:
     volumes: 
       - "./src:/usr/src"
     ports:
-      - 3000:3000
-    command: ["npm", "run"]    
+      - 3001:3000
+    command: ["npm", "start"]    
