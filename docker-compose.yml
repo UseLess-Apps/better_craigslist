@@ -10,12 +10,14 @@ services:
       POSTGRES_DB: db
     expose:
       - 5432
+    ports:
+      - 5432:5432
   server:
-    working_dir: "/usr/src"
+    working_dir: "/usr/app"
     image: node:14
     container_name: nodejs
     volumes: 
-      - "./src:/usr/src"
+      - "./:/usr/app"
     ports:
       - 3000:3000
     command: ["npm", "run", "dev"]    
