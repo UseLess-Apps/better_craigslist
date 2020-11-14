@@ -3,7 +3,18 @@ const sequelize = require('../../sequelize');
 
 const Post = sequelize.define('Post', {
   /**
-   * @property {Message} message
+   * @property {uuid} id
+   * @description id of the Post
+   */
+  id: {
+    type: Sequelize.UUID,
+    allowNull: false,
+    primaryKey: true,
+    defaultValue: Sequelize.UUIDV4,
+  },
+
+  /**
+   * @property {string} message
    * @description Message of the post
    */
   message: {
@@ -15,7 +26,7 @@ const Post = sequelize.define('Post', {
   },
 
   /**
-   * @property {Title} Title
+   * @property {string} Title
    * @description Title of the post
    */
   title: {
@@ -26,3 +37,5 @@ const Post = sequelize.define('Post', {
     },
   },
 });
+
+module.exports = Post;
