@@ -13,16 +13,23 @@ services:
     ports:
       - 5432:5432
   server:
-    working_dir: "/usr/app"
+    working_dir: "/usr/app/server"
     image: node:14
-    container_name: nodejs
     volumes: 
-      - "./:/usr/app"
+      - "./server:/usr/app/server"
     ports:
       - 3000:3000
     command: ["npm", "run", "dev"]    
     env_file: 
-      - ./env/development.env
+      - ./server/env/development.env
+  # client:
+  #   working_dir: "/usr/app/client"
+  #   image: node:14
+  #   volumes:
+  #     - "./client:/usr/app/client"
+  #   ports:
+  #     - 2999:3000
+  #   command: ["npm", "start"]
   pg_admin:
     container_name: pgsql_admin
     image: dpage/pgadmin4
